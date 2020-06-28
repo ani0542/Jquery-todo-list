@@ -1,0 +1,37 @@
+$(document).ready(function()
+{
+    $('#add').on('click',function()
+    {
+        var val=$('#work').val()
+        if(val!=='')
+        {
+            var list=$('<li></li>').text(val)
+            list.append($("<span class='rem'> X</span>"));
+            $('ol').append(list);
+            $('#work').val('')
+            //remove button
+
+            $('.rem').on('click',function()
+            {
+                $(this).parent().remove()
+            })
+        }
+        else
+        {
+            // alert('Field is empty!')
+            var popupback=$("<div id='popup'></div>");
+            var popup=$("<div id='popupchild'></div>").text('Field is empty');
+           popup.append($("<span class='rem'>X</span>"))
+            popupback.append(popup);
+
+            $('body').append(popupback);
+
+            $('.rem').on('click',function()
+            {
+                $(popupback).remove()
+            })
+           
+        }
+       
+    })
+})
